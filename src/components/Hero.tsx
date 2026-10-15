@@ -15,7 +15,7 @@ export default function Hero() {
           <div className="text-center lg:text-left">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-100 text-green-700 text-sm font-medium rounded-full mb-6">
               <Sparkles className="w-4 h-4" />
-              India's Smartest Waste Management Platform
+              Bengaluru Pilot — Demand Survey
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight tracking-tight">
               Turn <span className="text-green-600">Garbage</span>
@@ -23,15 +23,14 @@ export default function Hero() {
               into <span className="text-emerald-600">Value</span>
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-gray-600 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-              Schedule pickups, earn rewards for recyclables, and help build
-              cleaner, greener cities — all from one app.
+              We're exploring convenient household waste collection and recyclable pickup in Bengaluru. Register your interest and help shape the proposed pilot.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
               <a
                 href="#contact"
                 className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-green-600 text-white font-semibold rounded-full hover:bg-green-700 transition-all shadow-xl shadow-green-600/25 hover:shadow-green-600/40"
               >
-                Schedule Pickup
+                Register Interest
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
               <a
@@ -41,16 +40,7 @@ export default function Hero() {
                 Learn More
               </a>
             </div>
-            <div className="mt-10 flex items-center gap-8 justify-center lg:justify-start text-sm text-gray-500">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                10K+ Pickups Done
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-                500+ Happy Homes
-              </div>
-            </div>
+<p className="mt-8 text-sm text-gray-500">We are testing local demand. Service availability is not yet guaranteed.</p>
           </div>
 
           {/* Hero visual */}

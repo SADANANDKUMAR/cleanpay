@@ -1,13 +1,22 @@
 import { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from 'lucide-react';
+import { trackEvent } from '../analytics';
+import { Send, CheckCircle } from 'lucide-react';
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [formStartTracked, setFormStartTracked] = useState(false);
+  const handleFormFocus = () => {
+    if (formStartTracked) return;
+    setFormStartTracked(true);
+    trackEvent('form_start', { form_name: 'contact_interest' });
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Demo only: there is no backend, so this is not a successful lead.
+    trackEvent('form_submit_attempt', { form_name: 'contact_interest' });
     setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
+    setTimeout(() => setSubmitted(false), 5000);
   };
 
   return (
@@ -17,49 +26,24 @@ export default function Contact() {
           <p className="text-green-600 font-semibold text-sm uppercase tracking-wider mb-3">Get In Touch</p>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">Contact Us</h2>
           <p className="mt-4 text-gray-600 text-lg">
-            Ready to turn your garbage into value? Reach out or schedule your first pickup.
+            We're exploring a Bengaluru pilot for household waste collection and recyclable pickup. Register your interest while we assess local demand.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-5 gap-8">
           <div className="lg:col-span-2 space-y-6">
-            {[
-              { icon: MapPin, title: 'Address', text: '4th Floor, GreenTech Hub, HSR Layout, Bengaluru 560102' },
-              { icon: Phone, title: 'Phone', text: '+91 80 4567 8900' },
-              { icon: Mail, title: 'Email', text: 'hello@cleanpay.in' },
-              { icon: Clock, title: 'Working Hours', text: 'Mon — Sat, 7:00 AM — 8:00 PM' },
-            ].map((info) => (
-              <div key={info.title} className="flex gap-4">
-                <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <info.icon className="w-5 h-5 text-green-600" />
-                </div>
-                <div>
-                  <p className="font-semibold text-gray-900 text-sm">{info.title}</p>
-                  <p className="text-gray-600 text-sm mt-0.5">{info.text}</p>
-                </div>
-              </div>
-            ))}
-
-            <div className="bg-gradient-to-br from-green-600 to-emerald-600 rounded-2xl p-6 text-white mt-8">
-              <h4 className="font-bold text-lg mb-2">Quick Pickup</h4>
-              <p className="text-green-100 text-sm mb-4">
-                Need a pickup today? Call our hotline or use the app for instant booking.
-              </p>
-              <a
-                href="tel:+918045678900"
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-green-700 font-semibold text-sm rounded-full hover:bg-green-50 transition-colors"
-              >
-                <Phone className="w-4 h-4" />
-                Call Now
-              </a>
+            <div className="rounded-2xl border border-green-100 bg-white p-6">
+              <h3 className="font-bold text-gray-900 mb-2">Help shape the Bengaluru pilot</h3>
+              <p className="text-sm leading-6 text-gray-600">Tell us which collection service would be most useful in your locality. We're validating demand before confirming availability, pricing or pickup schedules.</p>
             </div>
           </div>
 
           <form
+            onFocusCapture={handleFormFocus}
             onSubmit={handleSubmit}
             className="lg:col-span-3 bg-white rounded-2xl p-8 border border-green-100 shadow-sm"
           >
-            <h3 className="text-xl font-bold text-gray-900 mb-6">Schedule a Pickup / Send a Message</h3>
+            <h3 className="text-xl font-bold text-gray-900 mb-3">Register Your Interest</h3><p className="text-sm text-gray-600 mb-6">This is a pilot-demand survey. Pickup service is not yet guaranteed. This demo form does not save or send your details.</p>
             <div className="grid sm:grid-cols-2 gap-4 mb-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1.5">Full Name</label>
@@ -115,12 +99,12 @@ export default function Contact() {
               {submitted ? (
                 <>
                   <CheckCircle className="w-5 h-5" />
-                  Sent Successfully!
+                  Demo Form Only
                 </>
               ) : (
                 <>
                   <Send className="w-5 h-5" />
-                  Send Message
+                  Preview Form (Not Sent)
                 </>
               )}
             </button>
