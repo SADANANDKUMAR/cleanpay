@@ -49,7 +49,8 @@ export default function AppIntegration() {
             One Platform, Three Experiences
           </h2>
           <p className="mt-4 text-gray-600 text-lg">
-            Purpose-built apps for every stakeholder in the waste management cycle.
+            How we plan to build it — one app each for households, collectors and operations.
+            None of these are released yet.
           </p>
         </div>
 
@@ -67,7 +68,7 @@ export default function AppIntegration() {
                   <h3 className="text-lg font-bold text-white">{role.title}</h3>
                   <div className="flex items-center gap-1 mt-1">
                     <Smartphone className="w-3 h-3 text-white/60" />
-                    <span className="text-xs text-white/60">iOS & Android</span>
+                    <span className="text-xs text-white/60">Planned — not yet released</span>
                   </div>
                 </div>
               </div>

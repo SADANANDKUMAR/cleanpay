@@ -13,7 +13,7 @@ export default function Business() {
           <p className="text-green-300 font-semibold text-sm uppercase tracking-wider mb-3">Enterprise Solutions</p>
           <h2 className="text-3xl sm:text-4xl font-bold">For Businesses & Communities</h2>
           <p className="mt-4 text-green-200 text-lg">
-            Scalable waste management for offices, gated communities, campuses, and industrial zones.
+            Planned offerings for offices, gated communities, campuses and industrial zones — register to help us scope them.
           </p>
         </div>
 

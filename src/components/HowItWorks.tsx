@@ -35,7 +35,7 @@ export default function HowItWorks() {
           <p className="text-green-600 font-semibold text-sm uppercase tracking-wider mb-3">Simple Process</p>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">How It Works</h2>
           <p className="mt-4 text-gray-600 text-lg">
-            Four simple steps from waste to reward. It's that easy.
+            How it would work once the pilot launches — four steps from waste to reward.
           </p>
         </div>
 

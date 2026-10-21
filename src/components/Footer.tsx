@@ -13,8 +13,8 @@ export default function Footer() {
               <span className="text-xl font-bold text-white">CleanPay</span>
             </a>
             <p className="text-sm leading-relaxed">
-              Turn garbage into value. India's smartest waste management platform
-              making cities cleaner, one pickup at a time.
+              Turn garbage into value. A proposed doorstep waste collection and
+              recycling service — currently testing demand for a Bengaluru pilot.
             </p>
           </div>
 

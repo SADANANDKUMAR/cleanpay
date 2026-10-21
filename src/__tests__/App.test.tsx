@@ -15,9 +15,9 @@ describe('CleanPay Landing Page', () => {
     expect(brandElements.length).toBeGreaterThanOrEqual(1);
   });
 
-  it('renders Schedule Pickup CTA buttons', () => {
+  it('renders Register Interest CTA buttons', () => {
     render(<App />);
-    const ctaButtons = screen.getAllByText('Schedule Pickup');
+    const ctaButtons = screen.getAllByText('Register Interest');
     expect(ctaButtons.length).toBeGreaterThanOrEqual(1);
   });
 
@@ -46,9 +46,10 @@ describe('CleanPay Landing Page', () => {
     expect(screen.getByText('Smart Waste Segregation')).toBeDefined();
   });
 
-  it('renders Rewards section with recyclable rates', () => {
+  it('renders Rewards section with indicative rates', () => {
     render(<App />);
-    expect(screen.getByText('Rewards System')).toBeDefined();
+    expect(screen.getByText('How Rewards Would Work')).toBeDefined();
+    expect(screen.getByText('Indicative Recyclable Rates')).toBeDefined();
     expect(screen.getByText('Plastic')).toBeDefined();
     expect(screen.getByText('E-Waste')).toBeDefined();
   });
@@ -67,24 +68,23 @@ describe('CleanPay Landing Page', () => {
     expect(screen.getByText('Admin Dashboard')).toBeDefined();
   });
 
-  it('renders Impact section', () => {
+  it('renders goals rather than claimed impact', () => {
     render(<App />);
-    expect(screen.getByText('Our Environmental Impact')).toBeDefined();
-    expect(screen.getByText('5,000+')).toBeDefined();
+    expect(screen.getByText("What We're Trying to Prove")).toBeDefined();
   });
 
-  it('renders Testimonials section', () => {
+  it('renders the pilot-status section', () => {
     render(<App />);
-    expect(screen.getByText('What Our Users Say')).toBeDefined();
-    expect(screen.getByText('Priya Sharma')).toBeDefined();
+    expect(screen.getByText("Why We're Running a Pilot")).toBeDefined();
+    expect(screen.getByText("We haven't launched yet")).toBeDefined();
   });
 
   it('renders FAQ section and toggles accordion', () => {
     render(<App />);
     expect(screen.getByText('Frequently Asked Questions')).toBeDefined();
-    const faqButton = screen.getByText('How do I earn money from recyclables?');
+    const faqButton = screen.getByText('What areas do you serve?');
     fireEvent.click(faqButton);
-    expect(screen.getByText(/weigh it on the spot/)).toBeDefined();
+    expect(screen.getByText(/None yet/)).toBeDefined();
   });
 
   it('renders Contact section', () => {
@@ -107,5 +107,37 @@ describe('CleanPay Landing Page', () => {
   it('renders Footer', () => {
     render(<App />);
     expect(screen.getByText(/2026 CleanPay/)).toBeDefined();
+  });
+
+  // Regression guard. The page previously claimed a track record it does not
+  // have, which contradicts its own "not yet live" disclaimer and is the kind
+  // of unsubstantiated claim that gets ads rejected under ASCI / the Consumer
+  // Protection Act. Keep it out.
+  it('makes no fabricated track-record or testimonial claims', () => {
+    const { container } = render(<App />);
+    const text = container.textContent ?? '';
+
+    const bannedClaims = [
+      '25K+',
+      '150+',
+      '5,000+',
+      '2M Liters',
+      '80 Tons',
+      '98%',
+      'Pickups Done',
+      'Trees Saved',
+      'Our Impact So Far',
+      'Trusted by thousands',
+      'What Our Users Say',
+      'Priya Sharma',
+      'Rajesh Patel',
+      'Ananya Rao',
+      'Vikram Singh',
+      'currently operational',
+      'Current Recyclable Rates',
+    ];
+
+    const found = bannedClaims.filter((claim) => text.includes(claim));
+    expect(found).toEqual([]);
   });
 });

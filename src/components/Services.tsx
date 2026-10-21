@@ -22,7 +22,7 @@ const services = [
   {
     icon: Recycle,
     title: 'Recycling',
-    description: 'We ensure every recyclable reaches verified recycling vendors. Earn money for what you discard.',
+    description: 'Recyclables would go only to verified vendors, with the value coming back to you.',
     features: ['Verified vendors', 'Fair pricing', 'Wallet credits'],
   },
 ];
@@ -35,7 +35,7 @@ export default function Services() {
           <p className="text-green-600 font-semibold text-sm uppercase tracking-wider mb-3">What We Offer</p>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">Our Services</h2>
           <p className="mt-4 text-gray-600 text-lg">
-            Comprehensive waste management solutions tailored for homes, offices, and communities.
+            The services we plan to offer homes, offices and communities — tell us which you'd actually use.
           </p>
         </div>
 

@@ -3,32 +3,32 @@ import { ChevronDown } from 'lucide-react';
 
 const faqs = [
   {
-    q: 'How do I schedule a pickup?',
-    a: 'Simply download the CleanPay app or visit our website, select your preferred date and time slot, and confirm your booking. Our team will arrive at your doorstep at the scheduled time.',
+    q: 'Can I book a pickup right now?',
+    a: 'Not yet. CleanPay is not an operating service — there is no app to download and no pickups are running. What you can do today is register your interest, which tells us whether to start in your area.',
   },
   {
-    q: 'How do I earn money from recyclables?',
-    a: 'When our collector picks up your recyclables (plastic, paper, metal, e-waste), they weigh it on the spot. The value is instantly credited to your CleanPay wallet, which you can withdraw to your bank account anytime.',
+    q: 'What areas do you serve?',
+    a: 'None yet. We are assessing demand in Bengaluru only, and the pilot would begin in whichever localities show the most interest. We are not operating in any other city.',
   },
   {
-    q: 'What areas do you currently serve?',
-    a: 'We are currently operational in Bengaluru, Hyderabad, Pune, and Mumbai, with plans to expand to 10 more cities this year. Enter your pincode in the app to check availability.',
+    q: 'When would the pilot actually start?',
+    a: 'We have not set a date, and we will not until enough households in a locality register. If we cannot gather enough interest, we will not launch — and we will say so rather than go quiet.',
   },
   {
-    q: 'Is there a minimum quantity for pickup?',
-    a: 'No minimum quantity for daily pickups. For heavy waste and bulk pickups, a minimum of 50 kg is required. Our team can guide you during booking.',
+    q: 'How would earning from recyclables work?',
+    a: 'The intended model: a collector weighs your recyclables at pickup and credits the value to your CleanPay wallet, which you could withdraw to your bank. Rates would follow scrap market prices at the time.',
   },
   {
-    q: 'How does CleanPay ensure responsible recycling?',
-    a: 'We maintain a verified network of recycling partners. Each vendor is audited quarterly for environmental compliance. We provide full traceability of your waste from collection to recycling.',
+    q: 'Does registering cost anything or commit me?',
+    a: 'No. It is free, there is nothing to pay, and you are not signing up for a service. If the pilot reaches your area we will contact you — you can decide then.',
   },
   {
-    q: 'Can communities or businesses get custom plans?',
-    a: 'Absolutely! We offer tailored solutions for gated communities, corporate offices, and industrial units with dedicated account managers, custom pricing, and analytics dashboards.',
+    q: 'What happens to the details I submit?',
+    a: 'We use your name, phone, email and locality only to contact you about this pilot and to understand demand by area. We do not sell or share them with third parties.',
   },
   {
-    q: 'What payment methods are supported?',
-    a: 'We accept UPI, debit/credit cards, net banking, and wallet payments. For businesses, we also support monthly invoicing and bank transfers.',
+    q: 'Can communities or businesses register too?',
+    a: 'Yes. Pick "Business / Community Plan" in the form. Societies and offices are exactly the kind of concentrated demand that makes a pilot area viable, so it genuinely helps us prioritise.',
   },
 ];
 

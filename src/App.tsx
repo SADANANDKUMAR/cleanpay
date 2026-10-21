@@ -7,7 +7,7 @@ import Rewards from './components/Rewards';
 import Business from './components/Business';
 import AppIntegration from './components/AppIntegration';
 import Impact from './components/Impact';
-import Testimonials from './components/Testimonials';
+import WhyPilot from './components/WhyPilot';
 import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -24,7 +24,7 @@ export default function App() {
       <Business />
       <AppIntegration />
       <Impact />
-      <Testimonials />
+      <WhyPilot />
       <FAQ />
       <Contact />
       <Footer />

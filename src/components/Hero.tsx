@@ -51,18 +51,20 @@ export default function Hero() {
                 <Recycle className="w-32 h-32 text-white/90" />
               </div>
               {/* Floating badges */}
+              {/* Status badges, not metrics — nothing has been collected yet, so
+                  showing "earned"/"saved" figures here would be fiction. */}
               <div className="absolute -top-4 -left-4 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 animate-bounce" style={{ animationDuration: '3s' }}>
-                <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center text-xl">💰</div>
+                <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center text-xl">📍</div>
                 <div>
-                  <p className="text-xs text-gray-500">Earned Today</p>
-                  <p className="text-sm font-bold text-gray-900">₹245</p>
+                  <p className="text-xs text-gray-500">Proposed pilot</p>
+                  <p className="text-sm font-bold text-gray-900">Bengaluru</p>
                 </div>
               </div>
               <div className="absolute -bottom-4 -right-4 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 animate-bounce" style={{ animationDuration: '4s' }}>
-                <div className="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center text-xl">🌱</div>
+                <div className="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center text-xl">🗳️</div>
                 <div>
-                  <p className="text-xs text-gray-500">CO₂ Saved</p>
-                  <p className="text-sm font-bold text-gray-900">12.5 kg</p>
+                  <p className="text-xs text-gray-500">Right now</p>
+                  <p className="text-sm font-bold text-gray-900">Gauging demand</p>
                 </div>
               </div>
             </div>

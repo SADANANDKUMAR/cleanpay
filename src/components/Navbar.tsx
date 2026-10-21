@@ -38,7 +38,7 @@ export default function Navbar() {
               href="#contact"
               className="px-5 py-2.5 bg-green-600 text-white text-sm font-semibold rounded-full hover:bg-green-700 transition-colors shadow-lg shadow-green-600/25"
             >
-              Schedule Pickup
+              Register Interest
             </a>
           </div>
 
@@ -70,7 +70,7 @@ export default function Navbar() {
               className="block w-full text-center px-5 py-2.5 bg-green-600 text-white text-sm font-semibold rounded-full hover:bg-green-700 transition-colors"
               onClick={() => setOpen(false)}
             >
-              Schedule Pickup
+              Register Interest
             </a>
           </div>
         </div>
