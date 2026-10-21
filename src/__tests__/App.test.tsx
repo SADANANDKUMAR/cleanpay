@@ -89,8 +89,19 @@ describe('CleanPay Landing Page', () => {
 
   it('renders Contact section', () => {
     render(<App />);
-    expect(screen.getByText('Contact Us')).toBeDefined();
-    expect(screen.getByText('hello@cleanpay.in')).toBeDefined();
+    expect(screen.getByText('Join the Bengaluru Pilot')).toBeDefined();
+    expect(screen.getAllByText('Register Your Interest').length).toBeGreaterThanOrEqual(1);
+  });
+
+  it('exposes a real, submittable interest form (not a demo stub)', () => {
+    render(<App />);
+    // The form used to be a no-op stub labelled "Preview Form (Not Sent)".
+    expect(screen.queryByText(/Not Sent/i)).toBeNull();
+    expect(screen.getByRole('button', { name: /Register Interest/i })).toBeDefined();
+    // Named fields are what actually carry the lead.
+    expect(screen.getByLabelText('Full Name')).toBeDefined();
+    expect(screen.getByLabelText('Phone')).toBeDefined();
+    expect(screen.getByLabelText('Your Locality')).toBeDefined();
   });
 
   it('renders Footer', () => {
