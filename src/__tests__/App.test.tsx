@@ -104,6 +104,16 @@ describe('CleanPay Landing Page', () => {
     expect(screen.getByLabelText('Your Locality')).toBeDefined();
   });
 
+  it('asks what people would pay, not just whether they are interested', () => {
+    render(<App />);
+    const priceField = screen.getByLabelText('What would you pay?') as HTMLSelectElement;
+    expect(priceField).toBeDefined();
+    const options = Array.from(priceField.options).map((o) => o.value);
+    expect(options).toContain('Up to ₹199/month');
+    expect(options).toContain('₹600+/month');
+    expect(options).toContain('Only if I earn from recyclables');
+  });
+
   it('renders Footer', () => {
     render(<App />);
     expect(screen.getByText(/2026 CleanPay/)).toBeDefined();

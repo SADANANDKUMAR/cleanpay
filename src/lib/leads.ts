@@ -36,17 +36,24 @@ export interface LeadInput {
   email?: string;
   service_type?: string;
   locality?: string;
+  /** Willingness to pay — the signal a free interest form otherwise misses. */
+  price_point?: string;
   message?: string;
   consent: boolean;
 }
 
 const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'] as const;
+// Google Ads auto-tagging appends ?gclid=... and Meta appends ?fbclid=... — these
+// are NOT utm params, so without capturing them separately an auto-tagged
+// campaign produces leads with no attribution at all.
+const CLICK_ID_KEYS = ['gclid', 'fbclid'] as const;
 const STORAGE_KEY = 'cleanpay_attribution';
 
-type Attribution = Partial<Record<(typeof UTM_KEYS)[number], string>> & {
-  referrer?: string;
-  landing_path?: string;
-};
+type Attribution = Partial<Record<(typeof UTM_KEYS)[number], string>> &
+  Partial<Record<(typeof CLICK_ID_KEYS)[number], string>> & {
+    referrer?: string;
+    landing_path?: string;
+  };
 
 /**
  * Records where this visitor came from, once per session. Called on app mount so
@@ -59,15 +66,22 @@ export function captureAttribution(): void {
   try {
     const params = new URLSearchParams(window.location.search);
     const found: Attribution = {};
-    let hasUtm = false;
+    let hasAttribution = false;
     for (const key of UTM_KEYS) {
       const value = params.get(key);
       if (value) {
         found[key] = value.slice(0, 160);
-        hasUtm = true;
+        hasAttribution = true;
       }
     }
-    if (!hasUtm && sessionStorage.getItem(STORAGE_KEY)) return;
+    for (const key of CLICK_ID_KEYS) {
+      const value = params.get(key);
+      if (value) {
+        found[key] = value.slice(0, 200);
+        hasAttribution = true;
+      }
+    }
+    if (!hasAttribution && sessionStorage.getItem(STORAGE_KEY)) return;
     if (document.referrer) found.referrer = document.referrer.slice(0, 500);
     found.landing_path = (window.location.pathname + window.location.search).slice(0, 300);
     sessionStorage.setItem(STORAGE_KEY, JSON.stringify(found));

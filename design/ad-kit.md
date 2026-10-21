@@ -126,6 +126,27 @@ group by 1
 order by leads desc;
 ```
 
+**Willingness to pay — the number that decides if this is a business:**
+```sql
+select
+  coalesce(price_point, '(not asked)') as would_pay,
+  count(*)                             as leads,
+  round(100.0 * count(*) / sum(count(*)) over (), 1) as pct
+from public.pilot_interest
+group by 1
+order by leads desc;
+```
+
+**Google Ads clicks (auto-tagging sends gclid, not UTMs):**
+```sql
+select date(created_at) as day, count(*) filter (where gclid is not null) as google_ad_leads,
+       count(*) filter (where fbclid is not null) as meta_ad_leads,
+       count(*) as total
+from public.pilot_interest
+group by 1
+order by day desc;
+```
+
 **Daily pace (are you hitting target?):**
 ```sql
 select date(created_at) as day, count(*) as leads

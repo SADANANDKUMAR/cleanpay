@@ -12,12 +12,24 @@ const SERVICE_TYPES = [
   'Other Inquiry',
 ];
 
+// Willingness to pay. Everyone says yes to a free idea — what someone will
+// actually pay is the signal worth collecting before building anything.
+const PRICE_POINTS = [
+  'Not sure yet',
+  'Up to ₹199/month',
+  '₹200 – ₹399/month',
+  '₹400 – ₹599/month',
+  '₹600+/month',
+  'Only if I earn from recyclables',
+];
+
 const EMPTY_FORM = {
   full_name: '',
   phone: '',
   email: '',
   service_type: SERVICE_TYPES[0],
   locality: '',
+  price_point: PRICE_POINTS[0],
   message: '',
   consent: false,
 };
@@ -59,6 +71,7 @@ export default function Contact() {
         email: form.email.trim() || undefined,
         service_type: form.service_type,
         locality: form.locality.trim() || undefined,
+        price_point: form.price_point,
         message: form.message.trim() || undefined,
         consent: form.consent,
       });
@@ -197,19 +210,40 @@ export default function Contact() {
                 </div>
               </div>
 
-              <div className="mb-4">
-                <label htmlFor="service_type" className="block text-sm font-medium text-gray-700 mb-1.5">Service Type</label>
-                <select
-                  id="service_type"
-                  name="service_type"
-                  value={form.service_type}
-                  onChange={(e) => update('service_type', e.target.value)}
-                  className={`${inputClass} text-gray-700`}
-                >
-                  {SERVICE_TYPES.map((service) => (
-                    <option key={service} value={service}>{service}</option>
-                  ))}
-                </select>
+              <div className="grid sm:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label htmlFor="service_type" className="block text-sm font-medium text-gray-700 mb-1.5">Service Type</label>
+                  <select
+                    id="service_type"
+                    name="service_type"
+                    value={form.service_type}
+                    onChange={(e) => update('service_type', e.target.value)}
+                    className={`${inputClass} text-gray-700`}
+                  >
+                    {SERVICE_TYPES.map((service) => (
+                      <option key={service} value={service}>{service}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="price_point" className="block text-sm font-medium text-gray-700 mb-1.5">
+                    What would you pay?
+                  </label>
+                  <select
+                    id="price_point"
+                    name="price_point"
+                    value={form.price_point}
+                    onChange={(e) => update('price_point', e.target.value)}
+                    className={`${inputClass} text-gray-700`}
+                  >
+                    {PRICE_POINTS.map((price) => (
+                      <option key={price} value={price}>{price}</option>
+                    ))}
+                  </select>
+                  <p className="mt-1.5 text-xs text-gray-500">
+                    Rough guide for regular pickup — helps us price it honestly.
+                  </p>
+                </div>
               </div>
 
               <div className="mb-5">
